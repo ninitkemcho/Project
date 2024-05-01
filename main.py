@@ -1,17 +1,12 @@
 import random
 from account_creation import add_account, accounts
-def generate_unique_IBAN():
-    while True:
-        iban = 'TB' 
-        for i in range(5):
-            iban+=random.choice('0123456789')
-        if iban not in accounts:
-            return iban       
+import functions
+
+
+   
 def main():
     while True:
-        menu = ["1. Create bank account", "2. Control balance", "3. Transfer money", "4. Account details", "5. Account history", "6. Loan calculator", "7. Exit"]
-        for i in menu:
-            print(i)
+        functions.menu()
         choice = int(input("Enter number: "))
         if choice == 1:
             name = input("To create account, enter your name: ")
@@ -21,8 +16,12 @@ def main():
                     print("Initial balance should not be more than 100 GEL")
                 else:
                     break           
-            unique_IBAN = generate_unique_IBAN()
+            unique_IBAN = functions.generate_unique_IBAN()
             add_account(name, amount, unique_IBAN)
             print(f"Account added successfully with IBAN: {unique_IBAN}")
+        elif choice == 7:
+            break
+
 if __name__ == "__main__":
     main()
+
