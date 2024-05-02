@@ -9,15 +9,16 @@ def menu():
         print(i)
 
 def generate_unique_IBAN():
-    iban = 'TB'
-    id = str(random.randint(0,5)).zfill(4)
-    iban += id
-    if iban not in ibans:
-        print(iban)
-        ibans.append(iban)
-        return
-    else:
-        generate_unique_IBAN()
+    while True:
+        iban = 'TB'
+        id = str(random.randint(0,9999)).zfill(4)
+        iban += id
+        if iban not in ibans:
+            ibans.append(iban)
+            return iban
+        
+
+
         
 
 
